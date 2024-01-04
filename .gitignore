@@ -1,0 +1,9 @@
+static_root/
+node_modules
+/media/*
+/venv/*
+*.vscode/*
+.idea
+*.env
+*.sqlite3
+*.pyc
