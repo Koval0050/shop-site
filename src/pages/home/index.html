@@ -22,7 +22,6 @@
 
     <!-- css -->
     <link rel="stylesheet" href="../../static/pages/home/index.css" />
-    <link rel="stylesheet" href="./main.css" />
   </head>
 
   <body>
@@ -40,20 +39,29 @@
         </a>
         <button class="header__cart-btn">
           2000$
-          <svg class="header__cart-btn-svg" height="58px" width="58px ">
-            <use href="../../assets/icons/cart.svg"></use>
-          </svg>
+          <img
+            class="header__cart-btn-svg"
+            src="../../assets/icons/cart.svg"
+            alt=""
+          />
         </button>
       </div>
     </header>
     <main>
-      <div class="container main">
-        <input class="main__search-input" type="text" placeholder="Search" />
+      <div class="main container">
+        <div class="main__search-wrapper">
+          <img
+            class="main__search-icon"
+            src="../../assets/icons/search.svg"
+            alt=""
+          />
+          <input class="main__search-input" type="text" placeholder="Search" />
+        </div>
 
-        <ul class="card-list">
+        <ul class="cards-list">
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -66,7 +74,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -79,7 +87,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -92,7 +100,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -105,7 +113,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -118,7 +126,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -131,7 +139,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -144,7 +152,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -157,7 +165,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -171,7 +179,7 @@
 
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -184,7 +192,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -197,7 +205,7 @@
           </li>
           <li class="cards-list__item">
             <img
-              class="card-list__img"
+              class="cards-list__img"
               src="../../assets/images/burger.png"
               alt=""
             />
@@ -211,7 +219,25 @@
         </ul>
       </div>
     </main>
-    <!-- <footer>future footer</footer> -->
+    <footer>
+      <div class="footer ">
+        <ul class="footer__list">
+          <li class="footer__list-item"><a href="#">About us</a></li>
+          <li class="footer__list-item"><a href="#">Help</a></li>
+          <li class="footer__list-item"><a href="#">Contact</a></li>
+        </ul>
+        <hr class="footer__line" />
+        <p class="footer__text">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam vitae
+          sint exercitationem doloribus quisquam perferendis ipsa eos repellat
+          sed architecto debitis molestiae expedita nulla laudantium, eaque iure
+          eum aspernatur quam.
+        </p>
+        <div class="footer__copyright">
+          <p class="footer__copyright-text">&copy 2024 Copyright by: Shop</p>
+        </div>
+      </div>
+    </footer>
     <script src="../../static/pages/home/index.js"></script>
   </body>
 </html>
