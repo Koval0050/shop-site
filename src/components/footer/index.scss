@@ -1,5 +1,3 @@
-/* ----------------FOOTER----------------- */
-
 .footer {
   padding-top: 50px;
   padding-bottom: 30px;
@@ -12,9 +10,9 @@
     &-item {
       transition: transform 0.3s ease;
       & a {
-        color: #c48c00;
         font-size: 20px;
         font-weight: 700;
+        color: #c48c00;
       }
       &:is(:hover, :focus) {
         transform: scale(1.1);
@@ -42,4 +40,3 @@
     }
   }
 }
-/* ----------------/FOOTER----------------- */
