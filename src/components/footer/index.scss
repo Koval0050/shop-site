@@ -10,7 +10,7 @@
     &-item {
       transition: transform 0.3s ease;
       & a {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 700;
         color: #c48c00;
       }
@@ -25,8 +25,8 @@
   }
 
   &__text {
-    font-size: 18px;
-    line-height: calc(20 / 18);
+    font-size: 14px;
+    line-height: calc(18 / 14);
     text-align: center;
     margin-bottom: 20px;
   }
@@ -36,7 +36,48 @@
     justify-content: center;
 
     &-text {
+      font-size: 12px;
       color: #c48c00;
+    }
+  }
+  @media screen and (min-width: 425px) {
+    &__list {
+      &-item {
+        & a {
+          font-size: 20px;
+        }
+      }
+    }
+
+    &__copyright {
+      &-text {
+        font-size: 14px;
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    &__list {
+      &-item {
+        & a {
+          font-size: 24px;
+        }
+      }
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: calc(18 / 16);
+    }
+    &__copyright {
+      &-text {
+        font-size: 16px;
+      }
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    &__text {
+      font-size: 18px;
+      line-height: calc(20 / 18);
     }
   }
 }

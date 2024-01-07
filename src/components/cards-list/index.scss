@@ -1,5 +1,6 @@
 .cards-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 17px;
 
@@ -59,4 +60,5 @@
       color: aliceblue;
     }
   }
+ 
 }
