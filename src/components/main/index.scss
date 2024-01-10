@@ -1,25 +1,23 @@
-/* ----------------MAIN----------------- */
 .main {
+  display: flex;
+  flex-direction: column;
   max-width: 1000px;
   padding-top: 65px;
   padding-bottom: 30px;
-  display: flex;
-  flex-direction: column;
-
   &__search-wrapper {
     position: relative;
-    margin-bottom: 50px;
-    max-width: 100%;
     display: flex;
     justify-content: flex-end;
+    max-width: 100%;
+    margin-bottom: 50px;
   }
-  .main__search-icon {
+  &__search-icon {
     position: absolute;
     top: 10px;
     right: 210px;
   }
 
-  .main__search-input {
+  &__search-input {
     width: 200px;
     padding: 13px 0;
     padding-left: 56px;
@@ -32,69 +30,6 @@
       border: 1px solid #ffb700;
     }
   }
+
+
 }
-
-.cards-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 17px;
-
-  &__item {
-    border-radius: 33.152px;
-    box-shadow: 0px 0px 1.105px 0px rgba(0, 0, 0, 0.04),
-      0px 4.42px 8.841px 0px rgba(0, 0, 0, 0.04),
-      0px 17.681px 26.522px 0px rgba(0, 0, 0, 0.04),
-      0px 26.522px 35.362px 0px rgba(0, 0, 0, 0.04);
-
-    padding: 29px 43px;
-    padding-bottom: 12px;
-
-    transition: transform 0.3s ease;
-
-    &:is(:hover, :focus) {
-      transform: scale(1.1);
-    }
-  }
-
-  .list-item__card-description {
-    text-align: center;
-  }
-
-  .list-item__card-name {
-    font-size: 22px;
-    line-height: calc(22 / 18);
-    text-transform: capitalize;
-    margin-bottom: 3px;
-  }
-
-  .list-item__card-weight {
-    color: #585858;
-    font-size: 11px;
-    line-height: calc(11 / 8);
-    margin-bottom: 3px;
-  }
-
-  .list-item__card-price {
-    color: #ffc633;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: calc(26 / 22);
-    margin-bottom: 5px;
-  }
-
-  .list-item__card-btn {
-    width: 100%;
-    cursor: pointer;
-    background-color: #ffc633;
-    border-radius: 25px;
-    padding: 5px 0;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #c48c00;
-      color: aliceblue;
-    }
-  }
-}
-
-/* ----------------/MAIN----------------- */

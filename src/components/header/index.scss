@@ -1,11 +1,7 @@
-/* ----------------HEADER----------------- */
-
 .header {
   display: flex;
   justify-content: space-between;
-  // max-width: 1200px;
-  padding-top: 33px;
-
+  padding-top: 20px;
   &__logo {
     display: flex;
     align-items: center;
@@ -13,14 +9,11 @@
     color: black;
 
     &-img {
-      width: 58px;
-      height: 58px;
-      border-radius: 25%;
-      margin-right: 13px;
+      display: none;
     }
 
     &-text {
-      font-size: 37.714px;
+      font-size: 25px;
       font-style: normal;
       font-weight: 700;
     }
@@ -31,17 +24,17 @@
   }
 
   &__cart-btn {
-    border-radius: 32px;
-    width: 200px;
-    background-color: #ffc633;
     display: flex;
     align-items: center;
-    color: aliceblue;
     text-align: center;
-    font-size: 30px;
+    width: 130px;
+    font-size: 23px;
     font-weight: 700;
+    border-radius: 32px;
+    background-color: #ffc633;
+    color: aliceblue;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 8px 15px;
     transition: background-color 0.3s ease;
 
     &:hover {
@@ -49,9 +42,65 @@
     }
 
     &-svg {
+      width: 20px;
+      height: 20px;
       margin-left: 10px;
     }
   }
-}
 
-/* ----------------/HEADER----------------- */
+  @media screen and (min-width: 425px) {
+    &__logo {
+      &-text {
+        font-size: 30px;
+      }
+      &-img {
+        display: block;
+        width: 38px;
+        height: 38px;
+        border-radius: 25%;
+        margin-right: 10px;
+      }
+    }
+    &__cart-btn {
+      width: 150px;
+
+      &-svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    &__cart-btn {
+      width: 150px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    & {
+      padding-top: 33px;
+    }
+    &__logo {
+      &-img {
+        width: 58px;
+        height: 58px;
+        margin-right: 13px;
+      }
+      &-text {
+        font-size: 37px;
+      }
+    }
+
+    &__cart-btn {
+      width: 200px;
+      font-size: 30px;
+      padding: 10px 20px;
+
+      &-svg{
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
