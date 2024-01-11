@@ -38,13 +38,31 @@
           </p>
         </a>
         <button class="header__cart-btn">
-          2000$
+          Cart <span class="header__cart-btn-span"></span>
           <img
             class="header__cart-btn-svg"
             src="/src/assets/icons/cart.svg"
             alt=""
           />
         </button>
+      </div>
+      <div class="cart-overlay is-hidden">
+        <div class="cart-modal">
+          <button class="close-btn">X</button>
+          <table class="cart-table" id="cartTable">
+            <thead>
+              <tr>
+                <th class="cart-table__header">Назва</th>
+                <th class="cart-table__header">Ціна</th>
+                <th class="cart-table__header">Кількість</th>
+                <th class="cart-table__header"></th>
+              </tr>
+            </thead>
+            <tbody class="cart-table__body"></tbody>
+          </table>
+          <p class="total-price">Total Price:</p>
+          <button class="submit-btn">Submit order</button>
+        </div>
       </div>
     </header>
     <main>
@@ -57,6 +75,12 @@
           />
           <input class="main__search-input" type="text" placeholder="Search" />
         </div>
+
+        <!-- LOADER -->
+        <div class="preloader">
+          <div class="loader"></div>
+        </div>
+        <!-- LOADER -->
 
         <ul class="cards-list"></ul>
       </div>
@@ -83,4 +107,3 @@
     <script src="/src/static/pages/home/index.js"></script>
   </body>
 </html>
-

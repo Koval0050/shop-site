@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 17px;
+  column-gap: 17px;
+  row-gap: 24px;
 
   &__item {
     position: relative;
@@ -25,13 +26,14 @@
       transform: scale(1.1);
     }
   }
+  .list-item__card-wrapper {
+  }
   .list-item__img-container {
     display: flex;
     justify-content: center;
     border-radius: 50%;
     background-color: #000;
     padding: 20px;
-    margin-bottom: 10px;
   }
   .list-item__card-img {
     width: 110px;
@@ -40,13 +42,20 @@
     object-fit: cover;
   }
 
-  .list-item__card-description {
+  .list-item__card-info {
     text-align: center;
   }
 
   .list-item__card-name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
     font-size: 22px;
     line-height: calc(22 / 18);
+    font-weight: 400;
+    color: #000;
     text-transform: capitalize;
     margin-bottom: 3px;
   }
@@ -67,7 +76,7 @@
     font-size: 26px;
     font-weight: 700;
     line-height: calc(26 / 22);
-    color: #ffc633;
+    color: #ef2626;
   }
 
   .list-item__card-price {
@@ -85,10 +94,16 @@
     font-weight: 700;
   }
   .list-item__card-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
     font-size: 14px;
     line-height: calc(18 / 14);
     color: #585858;
     margin-bottom: 8px;
+
   }
   .list-item__card-btn {
     width: 100%;
@@ -109,7 +124,7 @@
     font-size: 20px;
     font-weight: 400;
     line-height: calc(22 / 20);
-    color: #ffbb10;
+    color: #959595;
     position: relative;
 
     &::after {
@@ -122,7 +137,7 @@
       border: 1px solid red;
     }
   }
-  .is-visible-discount {
+  .is-visible {
     display: none;
   }
 }
