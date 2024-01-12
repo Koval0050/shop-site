@@ -3,57 +3,50 @@ import { Notify } from "notiflix";
 import { updateCartCounter } from "../header";
 
 const submitButton = document.querySelector(".submit-btn");
-const cartTableBody = document.querySelector(".cart-table__body");
+const cartItems = document.querySelector(".cart-items");
 
 export function renderCartItems() {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  if (cartItems.length === 0) {
+  const cartStorageItems =
+    JSON.parse(localStorage.getItem("cartStorageItems")) || [];
+
+  if (cartStorageItems.length === 0) {
     const cartIsEmpty = `<p class='cart-is-empty'>Cart is empty</p>`;
-    cartTableBody.innerHTML = cartIsEmpty;
+    cartItems.innerHTML = cartIsEmpty;
     return;
   }
 
-  const cartList = cartItems.map((item) => {
+  const cartList = cartStorageItems.map((item) => {
     const price = item?.discountPrice ? item.discountPrice : item.price;
-    return `<div class="cart-table__row">
-    <div class="cart-table__cell cart-table__cell--title">${item.title}</div>
-    <div class="cart-table__cell cart-table__cell--price">$${price.toFixed(
-      2
-    )}</div>
-    <div class="cart-table__cell cart-table__cell--quantity">
+    return `<div class="cart-item">
+    <div class="cart-item__property cart-item__title">${item.title}</div>
+    <div class="cart-item__property cart-item__price">$${price.toFixed(2)}</div>
+    <div class="cart-item__property cart-item__quantity">
         <button class="quantity-btn" data-action="decrease">-</button>
         <span class="quantity">${item.quantity}</span>
         <button class="quantity-btn" data-action="increase">+</button>
     </div>
-    <div class="cart-table__cell">
+    <div class="cart-item__property">
         <button class="remove-btn">Remove</button>
     </div>
-</div>
-`;
+</div>`;
   });
 
-  cartTableBody.innerHTML = "";
-  cartTableBody.insertAdjacentHTML("beforeend", cartList.join(""));
-
-  cartTableBody.addEventListener("click", (event) => {
-    const button = event.target.closest(".quantity-btn");
-    if (button) {
-      handleQuantityButtonClick(button);
-    }
-  });
+  cartItems.innerHTML = "";
+  cartItems.insertAdjacentHTML("beforeend", cartList.join(""));
 
   submitButton.addEventListener("click", handleSubmitButtonClick);
 }
 
+cartItems.addEventListener("click", (event) => {
+  const button = event.target.closest(".quantity-btn");
+  if (button) {
+    handleQuantityButtonClick(button);
+  }
+});
+
 //Відкриття модалки
 function openCartModal() {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
   const modal = document.querySelector(".cart-overlay");
-  // if (cartItems.length === 0) {
-  //   Notify.failure("cart is empty");
-  //   return;
-  // }
 
   updateTotalPrice();
   renderCartItems();
@@ -74,40 +67,38 @@ function closeCartModal(event) {
 
 //Функція для зміни кількості товару
 function handleQuantityButtonClick(button) {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartStorageItems =
+    JSON.parse(localStorage.getItem("cartStorageItems")) || [];
 
   const action = button.dataset.action;
-  const row = button.closest(".cart-table__row");
+  const row = button.closest(".cart-item");
   const quantityElement = row.querySelector(".quantity");
   let quantity = parseInt(quantityElement.textContent);
 
-  const rowIndex = cartItems.findIndex(
-    (item) =>
-      item.title === row.querySelector(".cart-table__cell--title").textContent
+  const rowIndex = cartStorageItems.findIndex(
+    (item) => item.title === row.querySelector(".cart-item__title").textContent
   );
   if (action === "increase") {
     quantity++;
-
-    console.log("+1");
   } else if (action === "decrease" && quantity > 1) {
     quantity--;
-
-    console.log("-1");
   }
   quantityElement.textContent = quantity;
 
-  // Оновлення кількості товару в localStorage
-  cartItems[rowIndex].quantity = quantity;
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  cartStorageItems[rowIndex].quantity = quantity;
+  localStorage.setItem("cartStorageItems", JSON.stringify(cartStorageItems));
+
+  updateCartCounter();
   updateTotalPrice();
 }
 
 function getTotalPrice() {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartStorageItems =
+    JSON.parse(localStorage.getItem("cartStorageItems")) || [];
 
   let total = 0;
 
-  cartItems.forEach((item) => {
+  cartStorageItems.forEach((item) => {
     const price = item.discountPrice ? item.discountPrice : item.price;
     total += price * item.quantity;
   });
@@ -124,17 +115,17 @@ function updateTotalPrice() {
 
 //Видалення товару
 function handleRemoveButtonClick(button) {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartStorageItems =
+    JSON.parse(localStorage.getItem("cartStorageItems")) || [];
 
-  const row = button.closest(".cart-table__row");
-  const rowIndex = cartItems.findIndex(
-    (item) =>
-      item.title === row.querySelector(".cart-table__cell--title").textContent
+  const row = button.closest(".cart-item");
+  const rowIndex = cartStorageItems.findIndex(
+    (item) => item.title === row.querySelector(".cart-item__title").textContent
   );
 
   // Видалення елементу з масиву та оновлення localStorage
-  cartItems.splice(rowIndex, 1);
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  cartStorageItems.splice(rowIndex, 1);
+  localStorage.setItem("cartStorageItems", JSON.stringify(cartStorageItems));
 
   renderCartItems();
   row.remove();
@@ -144,14 +135,27 @@ function handleRemoveButtonClick(button) {
 
 //Оформлння замовлення
 function handleSubmitButtonClick() {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartStorageItems =
+    JSON.parse(localStorage.getItem("cartStorageItems")) || [];
 
   const cartData = {
-    items: cartItems,
+    items: cartStorageItems,
     totalPrice: getTotalPrice(),
   };
 
+  if (cartData.items.length === 0) {
+    Notify.failure("Cart is empty");
+    return;
+  }
+
   console.log("Замовлення: ", cartData);
+  localStorage.removeItem("cartStorageItems");
+  const modal = document.querySelector(".cart-overlay");
+
+  modal.classList.add("is-hidden");
+  modal.removeEventListener("click", closeCartModal);
+  Notify.success("The order has been placed");
+  updateCartCounter();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -161,8 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCartItems();
   updateTotalPrice();
 
-  const cartTableBody = document.querySelector(".cart-table");
-  cartTableBody.addEventListener("click", (event) => {
+  cartItems.addEventListener("click", (event) => {
     const removeButton = event.target.closest(".remove-btn");
     if (removeButton) {
       handleRemoveButtonClick(removeButton);

@@ -1,7 +1,7 @@
 import "./index.scss";
 
 export function updateCartCounter() {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartItems = JSON.parse(localStorage.getItem("cartStorageItems")) || [];
   const cartCounterElement = document.querySelector(".header__cart-btn-span");
 
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);

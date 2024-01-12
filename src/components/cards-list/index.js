@@ -78,20 +78,25 @@ async function renderProductCards() {
 }
 
 function addToCart(item, quantity = 1) {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartItems = JSON.parse(localStorage.getItem("cartStorageItems")) || [];
 
   const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
   if (!existingItem) {
     cartItems.push({ ...item, quantity });
 
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("cartStorageItems", JSON.stringify(cartItems));
 
     updateCartCounter();
 
     Notiflix.Notify.success(`${item.title} added to cart`);
     console.log("Item added to cart:", item);
   } else {
-    Notiflix.Notify.info("Item already exists in the cart");
+    existingItem.quantity += 1;
+
+    localStorage.setItem("cartStorageItems", JSON.stringify(cartItems));
+    Notiflix.Notify.info(`Number of ${item.title} in the basket: ${existingItem.quantity}`);
+
+    updateCartCounter();
   }
 }
 
