@@ -46,24 +46,29 @@
           />
         </button>
       </div>
+
+      <!-- MODAL -->
       <div class="cart-overlay is-hidden">
         <div class="cart-modal">
           <button class="close-btn">X</button>
-          <table class="cart-table" id="cartTable">
-            <thead>
-              <tr>
-                <th class="cart-table__header">Назва</th>
-                <th class="cart-table__header">Ціна</th>
-                <th class="cart-table__header">Кількість</th>
-                <th class="cart-table__header"></th>
-              </tr>
-            </thead>
-            <tbody class="cart-table__body"></tbody>
-          </table>
+
+          <div class="cart-table" id="cartTable">
+            <div class="cart-table__row cart-table__header">
+              <div class="cart-table__cell">Назва</div>
+              <div class="cart-table__cell">Ціна</div>
+              <div class="cart-table__cell">Кількість</div>
+              <div style="width: 50px;" class="cart-table__cell"></div> 
+            </div>
+
+            <div class="cart-table__body"></div>
+          </div>
+
           <p class="total-price">Total Price:</p>
           <button class="submit-btn">Submit order</button>
         </div>
       </div>
+
+      <!-- MODAL -->
     </header>
     <main>
       <div class="main container">

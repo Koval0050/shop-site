@@ -1,23 +1,20 @@
 .preloader {
-
   width: 100px;
   height: 100px;
-  background-color: #333333;
+  margin: 0 auto;
   z-index: 99999;
+}
+.is-hidden.preloader{
+  display: none;
 }
 
 .loader {
-  border: 16px solid #333333;
-  border-top: 16px solid #3498db;
+  border: 16px solid transparent;
+  border-top: 16px solid #ffc633;
   border-radius: 50%;
   width: 120px;
   height: 120px;
   animation: spin 1s linear infinite;
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // margin-top: -60px;
-  // margin-left: -60px;
 }
 @keyframes spin {
   0% {

@@ -53,7 +53,6 @@
     -webkit-line-clamp: 2;
     text-overflow: ellipsis;
     font-size: 22px;
-    line-height: calc(22 / 18);
     font-weight: 400;
     color: #000;
     text-transform: capitalize;
@@ -103,7 +102,6 @@
     line-height: calc(18 / 14);
     color: #585858;
     margin-bottom: 8px;
-
   }
   .list-item__card-btn {
     width: 100%;
@@ -140,4 +138,5 @@
   .is-visible {
     display: none;
   }
+
 }

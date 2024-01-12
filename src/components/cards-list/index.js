@@ -4,6 +4,7 @@ import { getMenu } from "../../api/api";
 import { updateCartCounter } from "../header";
 
 Notiflix.Notify.init({
+  position: "left-top", // 'right-top' - 'right-bottom' - 'left-top'
   fontSize: "16px",
   closeButton: false,
   success: {
@@ -16,7 +17,9 @@ Notiflix.Notify.init({
 
 async function renderProductCards() {
   const listContainer = document.querySelector(".cards-list");
+  const preLoader = document.querySelector(".preloader");
   const menuItems = await getMenu();
+  preLoader.classList.add("is-hidden");
 
   //Встановлення дефолтних значень за відсутності данних
   const menuList = menuItems.map((item) => {
@@ -78,13 +81,14 @@ function addToCart(item, quantity = 1) {
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
   const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
-
   if (!existingItem) {
     cartItems.push({ ...item, quantity });
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
     updateCartCounter();
-    Notiflix.Notify.success("Item added to cart");
+
+    Notiflix.Notify.success(`${item.title} added to cart`);
     console.log("Item added to cart:", item);
   } else {
     Notiflix.Notify.info("Item already exists in the cart");
