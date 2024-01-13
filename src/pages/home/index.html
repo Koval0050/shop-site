@@ -38,7 +38,7 @@
           </p>
         </a>
         <button class="header__cart-btn">
-          2000$
+          Cart <span class="header__cart-btn-span"></span>
           <img
             class="header__cart-btn-svg"
             src="/src/assets/icons/cart.svg"
@@ -46,6 +46,29 @@
           />
         </button>
       </div>
+
+      <!-- MODAL -->
+      <div class="cart-overlay is-hidden">
+        <div class="cart-modal">
+          <button class="close-btn">X</button>
+
+          <div class="cart-container" id="cartContainer">
+            <div class="cart-item cart-item__header">
+              <div class="cart-item__property">Name</div>
+              <div class="cart-item__property">Price</div>
+              <div class="cart-item__property">Count</div>
+              <div style="width: 50px" class="cart-item__property"></div>
+            </div>
+
+            <div class="cart-items"></div>
+          </div>
+
+          <p class="total-price">Total Price:</p>
+          <button class="submit-btn">Submit order</button>
+        </div>
+      </div>
+
+      <!-- MODAL -->
     </header>
     <main>
       <div class="main container">
@@ -58,169 +81,17 @@
           <input class="main__search-input" type="text" placeholder="Search" />
         </div>
 
-        <ul class="cards-list">
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
+        <!-- LOADER -->
+        <div class="preloader">
+          <div class="loader"></div>
+        </div>
+        <!-- LOADER -->
 
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-          <li class="cards-list__item">
-            <img
-              class="cards-list__img"
-              src="/src/assets/images/burger.png"
-              alt=""
-            />
-            <div class="list-item__card-description">
-              <p class="list-item__card-name">burger</p>
-              <p class="list-item__card-weight">150g</p>
-              <p class="list-item__card-price">$ 3.50</p>
-            </div>
-            <button class="list-item__card-btn">add to cart</button>
-          </li>
-        </ul>
+        <ul class="cards-list"></ul>
       </div>
     </main>
     <footer>
-      <div class="footer ">
+      <div class="footer">
         <ul class="footer__list">
           <li class="footer__list-item"><a href="#">About us</a></li>
           <li class="footer__list-item"><a href="#">Help</a></li>

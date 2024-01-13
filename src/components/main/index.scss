@@ -14,11 +14,11 @@
   &__search-icon {
     position: absolute;
     top: 10px;
-    right: 210px;
+    left: 20px;
   }
 
   &__search-input {
-    width: 200px;
+    width: 100%;
     padding: 13px 0;
     padding-left: 56px;
     border-radius: 9px;
@@ -30,6 +30,17 @@
       border: 1px solid #ffb700;
     }
   }
+ 
 
-
+  @media screen and (min-width: 768px) {
+    &__search-icon {
+      left: auto;
+      right: 210px;
+    }
+    &__search-input {
+      width: 200px;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+  }
 }
