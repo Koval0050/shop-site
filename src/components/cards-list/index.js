@@ -31,7 +31,7 @@ async function renderProductCards() {
     //Створюємо прапорець для перевірки наявності знижки
     const hasDiscountPrice = item?.discountPrice;
 
-    // Округлення значень price та discountPrice до 1 символу після коми
+    // Округлення значень price та discountPrice до 2 символу після коми
     const formattedPrice = Number(item.price).toFixed(2);
     const formattedDiscountPrice = hasDiscountPrice
       ? Number(item.discountPrice).toFixed(2)
@@ -67,10 +67,10 @@ async function renderProductCards() {
 
   // Cлухач подій для контейнера з усіма кнопками "add to cart"
   listContainer.addEventListener("click", (event) => {
-    const targetButton = event.target.closest(".list-item__card-btn");
+    const addToCartBtn = event.target.closest(".list-item__card-btn");
 
-    if (targetButton) {
-      const itemId = targetButton.closest(".cards-list__item").id;
+    if (addToCartBtn) {
+      const itemId = addToCartBtn.closest(".cards-list__item").id;
       const item = menuItems.find((item) => item.id === itemId);
       addToCart(item);
     }
@@ -94,7 +94,7 @@ function addToCart(item, quantity = 1) {
     existingItem.quantity += 1;
 
     localStorage.setItem("cartStorageItems", JSON.stringify(cartItems));
-    Notiflix.Notify.info(`Number of ${item.title} in the basket: ${existingItem.quantity}`);
+    Notiflix.Notify.success(`Number of ${item.title} in the basket: ${existingItem.quantity}`);
 
     updateCartCounter();
   }
